@@ -1,0 +1,22 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+# .gitlab-ci.yml (for GitLab CI/CD)
+
+stages:
+  - build
+
+variables:
+  JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
+
+before_script:
+  - apt-get update -qy
+  - apt-get install -y openjdk-11-jdk
+
+build:
+  stage: build
+  script:
+    - javac helloworld.java
+    - java helloworld
